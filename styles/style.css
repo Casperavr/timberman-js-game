@@ -23,5 +23,10 @@ section {
     width: 75vw;
     height: 80vh;
     background-color: rgb(157, 209, 255);
+    position: relative;
 }
 
+#player {
+    background-color: red;
+    position: absolute;
+}
