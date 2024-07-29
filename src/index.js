@@ -1,12 +1,14 @@
 // create instances
 const myLumberjack = new Player(); 
+const firstLog = new TreeLog(1); 
 
 //global variables
 
 
-
 /* functionality    -   -   -   -   -   -   -   -   -   -*/
 
+
+// interaction
 document.addEventListener("keydown", (event) => {
     console.log(event.code)
     if(event.code === 'ArrowLeft'){
@@ -33,3 +35,7 @@ document.addEventListener("keydown", (event) => {
         myLumberjack.moveRight();
     }
 });
+
+
+
+//log movement

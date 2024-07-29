@@ -30,3 +30,8 @@ section {
     background-color: red;
     position: absolute;
 }
+
+#tree-log {
+    background-color: burlywood;
+    position: absolute;
+}
