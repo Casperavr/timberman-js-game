@@ -11,7 +11,7 @@ class TreeLog{
         this.branchWidth = 8;
         this.branchHeight = 2;
         this.branchPosX = branchpos === 0 ? 25.5 : 41.5;  // 25.5 is left, 41.5 is right
-        this.branchPosY = this.positionY + 2;
+        this.branchPosY = this.positionY + 8;
         this.createtreeElement();               
 
 
@@ -49,7 +49,7 @@ class TreeLog{
 
     moveDown(){
         this.positionY -= 20;
-        this.branchPosY = this.positionY + 2;
+        this.branchPosY = this.positionY + 8;
         this.treeElement.style.bottom = `${this.positionY}vh`;
 
         if(this.branchElement){

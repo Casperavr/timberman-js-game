@@ -26,11 +26,18 @@ section {
     height: 100%;
     background-color: rgb(157, 209, 255);
     position: relative;
+    background-image: url("../img/backdrop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* padding-bottom: 20px; */
 }
 
 #player {
-    background-color: red;
+    /* background-color: red; */
     position: absolute;
+    background-image: url("../img/timberman-right.png");
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #tree-log {
