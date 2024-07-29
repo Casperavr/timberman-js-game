@@ -1,6 +1,6 @@
 // create instances
 const myLumberjack = new Player(); 
-const firstLog = new TreeLog(1); 
+const firstLog = new TreeLog(0); 
 
 //global variables
 
