@@ -54,6 +54,7 @@ h4{
     align-items: center;
     justify-content: space-evenly;
     border-radius: 50px;
+    z-index: 3;
 }
 
 
@@ -63,16 +64,21 @@ h4{
     background-image: url("../img/timberman-right_scaled_10x_pngcrushed.png");
     background-repeat: no-repeat;
     background-size: contain;
+    z-index: 1;
 }
 
 #tree-log {
     background-color: burlywood;
     position: absolute;
+    background-image: url("../img/log_scaled_8x_pngcrushed.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #branch {
     background-color: burlywood;
     position: absolute;
+    z-index: 2;
 }
 
 #gameover h2{

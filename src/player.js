@@ -27,20 +27,37 @@ class Player {
     moveLeft(){
         this.positionX = 23;
         this.playerElement.style.left = `${this.positionX}vw`;
+        this.width = 8/3*5;
+        this.playerElement.style.width = `${this.width}vw`;
         console.log("moved left");
-        this.playerElement.style.backgroundImage = `url("../img/timberman-left_scaled_10x_pngcrushed.png")`;
+        this.playerElement.style.backgroundImage = `url("../img/timberman-hack-left_scaled_10x_pngcrushed.png")`;
+        this.hackTimeoutLeft = setTimeout(() => {this.playerElement.style.backgroundImage = `url("../img/timberman-left_scaled_10x_pngcrushed.png")`}, 50);
 
     }
 
     moveRight(){
-        this.positionX = 44;
+        this.positionX = 39;
         this.playerElement.style.left = `${this.positionX}vw`;
+        this.width = 8/3*5;
+        this.playerElement.style.width = `${this.width}vw`;
         console.log("moved right");
-        this.playerElement.style.backgroundImage = `url("../img/timberman-right_scaled_10x_pngcrushed.png")`;
+        this.playerElement.style.backgroundImage = `url("../img/timberman-hack-right_scaled_9x_pngcrushed.png")`;
+        this.hackTimeoutRight = setTimeout(() => {
+            this.playerElement.style.backgroundImage = `url("../img/timberman-right_scaled_10x_pngcrushed.png")`;
+            this.positionX = 44;
+            this.playerElement.style.left = `${this.positionX}vw`;
+        }, 50);
+
     }
 
     hasDied(scoreCounter){
+        clearTimeout(this.hackTimeoutLeft);
+        clearTimeout(this.hackTimeoutRight);
+
+        this.width = 8;
+        this.playerElement.style.width = `${this.width}vw`;
         this.playerElement.style.backgroundImage = `url("../img/Gravestone.png")`;
+
         clearInterval(logMovingInterval);
         clearInterval(countdownInterval);
 
