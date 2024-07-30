@@ -8,16 +8,17 @@ body {
     height: 100vh;
     width: 100vw;
     flex-direction: column;
+    position: relative;
 
 }
 
 section {
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-bottom: 5vh;
     width: 75vw;
     height: 80vh;
+    align-items: flex-start;
 }
 
 #board {
@@ -32,10 +33,33 @@ section {
     /* padding-bottom: 20px; */
 }
 
+h4{
+    font-size: 3em;
+    position: absolute;
+    display: flex;
+    width: 6vw;
+    height: 6vh;
+    z-index: 1;
+    justify-content: center;
+}
+
+#gameover {
+    position: absolute;
+    background-color: rgb(137, 137, 137);
+    width: 40vw;
+    height: 55vh;
+    /* visibility: hidden; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
 #player {
     /* background-color: red; */
     position: absolute;
-    background-image: url("../img/timberman-right.png");
+    background-image: url("../img/timberman-right_scaled_10x_pngcrushed.png");
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -48,4 +72,22 @@ section {
 #branch {
     background-color: burlywood;
     position: absolute;
+}
+
+#gameover h2{
+    font-size: 4em;
+    display: flex;
+}
+
+#gameover h3{
+    font-size: 3em;
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 120px;
+}
+
+#gameover a{
+    font-size: 2em;
+    display: flex;
+    padding: 50px;
 }

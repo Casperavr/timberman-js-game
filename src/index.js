@@ -1,12 +1,13 @@
 // create instances
 const myLumberjack = new Player();
-// first log has no branch 
+// first logs has no branch 
 const firstLog = new TreeLog(1); 
 
 // global variables
 let treeArray = [];
 treeArray.push(firstLog);
 let isDead = false;
+let scoreCounter = 0;
 
 /* functionality    -   -   -   -   -   -   -   -   -   -*/
 
@@ -16,61 +17,27 @@ document.addEventListener("keydown", (event) => {
     if(isDead){return}
 
     switch(event.code) {
-        case "ArrowLeft" || "KeyA" || "Comma":
+        case "ArrowLeft":
             myLumberjack.moveLeft();
             treeArray[0].removeLog();
             treeArray.shift();
-            createLog();
+            scoreCounter++;
+            myLumberjack.updateScore(scoreCounter);
             break;
-        case "ArrowRight" || "KeyD" || "Period":
+        
+        case "ArrowRight":
             myLumberjack.moveRight();
             treeArray[0].removeLog();
             treeArray.shift();
-            createLog();
+            scoreCounter++;
+            myLumberjack.updateScore(scoreCounter);
             break;
     }
-
-
-//     if(event.code === 'ArrowLeft'){
-//         myLumberjack.moveLeft();
-//         treeArray[0].removeLog();
-//         treeArray.shift();
-//     } else 
-    
-//     if(event.code === 'KeyA'){
-//         myLumberjack.moveLeft();
-//         treeArray[0].removeLog();
-//         treeArray.shift();
-//     } else 
-
-//     if(event.code === 'Comma'){
-//         myLumberjack.moveLeft();
-//         treeArray[0].removeLog();
-//         treeArray.shift();
-//     } else 
-    
-//     if(event.code === 'ArrowRight'){
-//         myLumberjack.moveRight();
-//         treeArray[0].removeLog();
-//         treeArray.shift();
-//     } else
-
-//     if(event.code === 'KeyD'){
-//         myLumberjack.moveRight();
-//         treeArray[0].removeLog();
-//         treeArray.shift();
-//     } else
-
-//     if(event.code === 'Period'){
-//         myLumberjack.moveRight();
-//         treeArray[0].removeLog();
-//         treeArray.shift();
-//     }
 });
 
 
 // log movement and spawning
-setInterval(() => {
+const logMovingInterval = setInterval(() => {
 
     // moving the logs down over the tree array
     if(treeArray[0].positionY > 15){
@@ -80,30 +47,34 @@ setInterval(() => {
         }
     }
 
-    
     // adding new logs if the screen is not filled with logs
     // also only add randomized log if the previous log doesnt have a branch
-    // if(treeArray.length < 5 && treeArray[treeArray.length - 1].branchPosition === 1){
-    //     treeArray.push(new TreeLog(Math.floor(Math.random() * 3)))
-    //     console.log("new random log added")
-    // } else if(treeArray.length < 5){
-    //     treeArray.push(new TreeLog(1))
-    //     console.log("empty log added")
-    // }
-    checkIfDied();
+    if(treeArray.length < 5 && treeArray[treeArray.length - 1].branchPosition === 1){
+        treeArray.push(new TreeLog(Math.floor(Math.random() * 3)))
+        console.log("new random log added")
+    } else 
     
-}, 30);
+    if(treeArray.length < 5){
+        treeArray.push(new TreeLog(1))
+        console.log("empty log added")
+    }
+
+    checkIfDied();
+}, 20);
 
 // check to see if the player position is the same as the branch position of the fist log
 function checkIfDied(){
+
     if(myLumberjack.positionX === 23 && treeArray[0].branchPosition === 0){
         isDead = true;
+        myLumberjack.hasDied(scoreCounter);
         console.log("died")
-        setTimeout(()=>{location.href = "gameover.html"}, 2000)
-    } else if(myLumberjack.positionX === 44 && treeArray[0].branchPosition === 2){
+    } else 
+    
+    if(myLumberjack.positionX === 44 && treeArray[0].branchPosition === 2){
         isDead = true;
+        myLumberjack.hasDied(scoreCounter);
         console.log("died")
-        setTimeout(()=>{location.href = "gameover.html"}, 2000)
     }
 }
 
