@@ -7,6 +7,7 @@ class Player {
 
         this.createPlayerElement();
         this.displayScore(0);
+        this.displayCountdown();
 
     }
 
@@ -41,6 +42,7 @@ class Player {
     hasDied(scoreCounter){
         this.playerElement.style.backgroundImage = `url("../img/Gravestone.png")`;
         clearInterval(logMovingInterval);
+        clearInterval(countdownInterval);
 
         setTimeout(() => {
 
@@ -75,7 +77,22 @@ class Player {
     }
 
     updateScore(){
+        scoreCounter++;
         this.scoreElement.innerText = scoreCounter;
     }
 
+    displayCountdown(){
+        this.countdownElement = document.createElement("div");
+        this.countdownElement.id = "countdownTimer";
+        const sectionElement = document.getElementsByTagName("section")[0];
+        sectionElement.appendChild(this.countdownElement);
+
+        this.countdownProgressElement = document.createElement("div");
+        this.countdownProgressElement.id = "countdownProgress";
+        this.countdownElement.appendChild(this.countdownProgressElement);
+    }
+
+    updateCountdown(width){
+        this.countdownProgressElement.style.width = width;
+    }
 }

@@ -53,6 +53,7 @@ h4{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    border-radius: 50px;
 }
 
 
@@ -90,4 +91,26 @@ h4{
     font-size: 2em;
     display: flex;
     padding: 50px;
+    padding-top: 0;
+}
+
+#countdownTimer{
+    width: 20vw;
+    height: 3vh;
+    background-color: #9c0000;
+    border: #9c0000 6px solid;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 40vh;
+    display: flex;
+    align-items: flex-start;
+}
+
+#countdownProgress{
+    height: 3vh;
+    background-color: #ff2626;
+    display: flex;
+    width: 15vw;
+
 }

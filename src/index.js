@@ -1,13 +1,19 @@
 // create instances
 const myLumberjack = new Player();
-// first logs has no branch 
 const firstLog = new TreeLog(1); 
 
 // global variables
 let treeArray = [];
 treeArray.push(firstLog);
 let isDead = false;
+let hasStarted = false;
 let scoreCounter = 0;
+let countdown = 5000;
+let countdownMax = 9500;
+let countdownInterval;
+let difficulty = 0;
+
+
 
 /* functionality    -   -   -   -   -   -   -   -   -   -*/
 
@@ -18,25 +24,34 @@ document.addEventListener("keydown", (event) => {
 
     switch(event.code) {
         case "ArrowLeft":
+            if(!hasStarted){hasStarted = true; startTimer()};
+            if(countdown < countdownMax){countdown += 500};
+            updateDifficulty();
+
             myLumberjack.moveLeft();
+            myLumberjack.updateScore(scoreCounter);
+
             treeArray[0].removeLog();
             treeArray.shift();
-            scoreCounter++;
-            myLumberjack.updateScore(scoreCounter);
             break;
         
+        
         case "ArrowRight":
+            if(!hasStarted){hasStarted = true; startTimer()};
+            if(countdown < countdownMax){countdown += 500};
+            updateDifficulty();
+
             myLumberjack.moveRight();
+            myLumberjack.updateScore(scoreCounter);
+
             treeArray[0].removeLog();
             treeArray.shift();
-            scoreCounter++;
-            myLumberjack.updateScore(scoreCounter);
             break;
     }
 });
 
 
-// log movement and spawning
+// gametick containing: log movement and spawning, checking for deaths and updating countdown progress
 const logMovingInterval = setInterval(() => {
 
     // moving the logs down over the tree array
@@ -60,9 +75,11 @@ const logMovingInterval = setInterval(() => {
     }
 
     checkIfDied();
+
+    myLumberjack.updateCountdown(`${countdown/countdownMax*20}vw`)
 }, 20);
 
-// check to see if the player position is the same as the branch position of the fist log
+// check to see if the player position is the same as the branch position of the fist log 
 function checkIfDied(){
 
     if(myLumberjack.positionX === 23 && treeArray[0].branchPosition === 0){
@@ -72,6 +89,12 @@ function checkIfDied(){
     } else 
     
     if(myLumberjack.positionX === 44 && treeArray[0].branchPosition === 2){
+        isDead = true;
+        myLumberjack.hasDied(scoreCounter);
+        console.log("died")
+    }
+
+    if(countdown < 0){
         isDead = true;
         myLumberjack.hasDied(scoreCounter);
         console.log("died")
@@ -89,5 +112,15 @@ function createLog(){
     }
 }
 
+function startTimer(){
+    countdownInterval = setInterval(() => {countdown -= 50 + difficulty * 20}, 50);
+}
 
+function stopTimer(){
+    clearInterval(countdownInterval);
+}
+
+function updateDifficulty(){
+    if(scoreCounter % 15 === 0){difficulty += 1};
+}
 
