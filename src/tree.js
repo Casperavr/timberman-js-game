@@ -2,9 +2,9 @@ class TreeLog{
     constructor(branchpos){
         //log
         this.width = 8;
-        this.height = 15;                      // as tall as player
+        this.height = 16;                      // as tall as player
         this.positionX = 33.5;                 // center of screen
-        this.positionY = 65;
+        this.positionY = 80;
 
         //branches
         this.branchPosition = branchpos;       // 0 is left, 1 is none, 2 is right
@@ -12,7 +12,8 @@ class TreeLog{
         this.branchHeight = 2;
         this.branchPosX = branchpos === 0 ? 25.5 : 41.5;  // 25.5 is left, 41.5 is right
         this.branchPosY = this.positionY + 5;
-        this.createtreeElement();               
+        this.createtreeElement();              
+        this.createTrunkElement();
 
 
         // only create a branchelement if there is a branchposition
@@ -20,6 +21,20 @@ class TreeLog{
             this.createBranchElement();
         }
     }
+
+    createTrunkElement(){
+        this.trunkElement = document.createElement("div");
+
+        this.trunkElement.id = "tree-trunk";
+        this.trunkElement.style.width = `13vw`;
+        this.trunkElement.style.height = `5vh`;
+        this.trunkElement.style.bottom = `0vh`;
+
+        const boardElement = document.getElementById("board");
+        boardElement.appendChild(this.trunkElement);
+    }
+
+
 
     createtreeElement(){
         this.treeElement = document.createElement("div");
@@ -29,6 +44,10 @@ class TreeLog{
         this.treeElement.style.height = `${this.height}vh`;
         this.treeElement.style.left = `${this.positionX}vw`;
         this.treeElement.style.bottom = `${this.positionY}vh`;
+        let random = Math.floor(Math.random() * 3)
+        if(random === 0){this.treeElement.style.backgroundImage = `url("./img/log1_scaled_7x_pngcrushed.png")`;}
+        if(random === 1){this.treeElement.style.backgroundImage = `url("./img/log2_scaled_7x_pngcrushed.png")`;}
+        if(random === 2){this.treeElement.style.backgroundImage = `url("./img/log3_scaled_7x_pngcrushed.png")`;}
 
         const boardElement = document.getElementById("board");
         boardElement.appendChild(this.treeElement);
@@ -48,13 +67,30 @@ class TreeLog{
     }
 
     moveDown(){
+        const totalDistance = this.height;
+        const steps = this.height;
+        const intervalDuration = 20/15;
+        const stepDistance = totalDistance / steps;
+        let stepPositionY = this.positionY;
         this.positionY -= 15;
-        this.branchPosY = this.positionY + 5;
-        this.treeElement.style.bottom = `${this.positionY}vh`;
 
-        if(this.branchElement){
-            this.branchElement.style.bottom = `${this.branchPosY}vh`;
-        }
+        let currentStep = 0
+
+        const stepInterval = setInterval(() => {
+            if(currentStep < steps) {
+                stepPositionY -= stepDistance;
+                this.branchPosY = stepPositionY + 5;
+                this.treeElement.style.bottom = `${stepPositionY}vh`;
+
+                if(this.branchElement){
+                    this.branchElement.style.bottom = `${this.branchPosY}vh`;
+                }
+
+                currentStep++;
+            } else {
+                clearInterval(stepInterval);
+            }
+        }, intervalDuration);
     }
 
     removeLog(){

@@ -24,7 +24,7 @@ document.addEventListener("keydown", (event) => {
 
     switch(event.code) {
         case "ArrowLeft":
-            if(!hasStarted){hasStarted = true; startTimer()};
+            if(!hasStarted){hasStarted = true; startTimer(); myLumberjack.removeInstructionElement()};
             if(countdown < countdownMax){countdown += 500};
             updateDifficulty();
 
@@ -37,7 +37,7 @@ document.addEventListener("keydown", (event) => {
         
         
         case "ArrowRight":
-            if(!hasStarted){hasStarted = true; startTimer()};
+            if(!hasStarted){hasStarted = true; startTimer(); myLumberjack.removeInstructionElement()};
             if(countdown < countdownMax){countdown += 500};
             updateDifficulty();
 
@@ -64,12 +64,12 @@ const logMovingInterval = setInterval(() => {
 
     // adding new logs if the screen is not filled with logs
     // also only add randomized log if the previous log doesnt have a branch
-    if(treeArray.length < 5 && treeArray[treeArray.length - 1].branchPosition === 1){
+    if(treeArray.length < 6 && treeArray[treeArray.length - 1].branchPosition === 1){
         treeArray.push(new TreeLog(Math.floor(Math.random() * 3)))
         console.log("new random log added")
     } else 
     
-    if(treeArray.length < 5){
+    if(treeArray.length < 6){
         treeArray.push(new TreeLog(1))
         console.log("empty log added")
     }

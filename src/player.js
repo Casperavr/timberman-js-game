@@ -8,6 +8,7 @@ class Player {
         this.createPlayerElement();
         this.displayScore(0);
         this.displayCountdown();
+        this.createInstructionElement();
 
     }
 
@@ -22,6 +23,23 @@ class Player {
 
         const boardElement = document.getElementById("board");
         boardElement.appendChild(this.playerElement);
+    }
+
+    createInstructionElement(){
+        this.instructionElement = document.createElement("div");
+        this.instructionElement.id = "instruction";
+        const bodyElement = document.getElementsByTagName("body")[0];
+        bodyElement.appendChild(this.instructionElement);
+
+        this.controlsElement = document.createElement("h2");
+        this.controlsElement.innerText = `Press Arrow Left or Arrow Right to start
+                                        Try to avoid the branches!`;
+        this.instructionElement.appendChild(this.controlsElement);
+    }
+
+    removeInstructionElement(){
+        this.instructionElement.remove();
+        this.controlsElement.remove();
     }
 
     moveLeft(){
