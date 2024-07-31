@@ -8,9 +8,9 @@ class TreeLog{
 
         //branches
         this.branchPosition = branchpos;       // 0 is left, 1 is none, 2 is right
-        this.branchWidth = 8;
-        this.branchHeight = 2;
-        this.branchPosX = branchpos === 0 ? 25.5 : 41.5;  // 25.5 is left, 41.5 is right
+        this.branchWidth = 22;
+        this.branchHeight = 10;
+        this.branchPosX = branchpos === 0 ? 12.6 : 41.5;  // 25.5 is left, 41.5 is right
         this.branchPosY = this.positionY + 5;
         this.createtreeElement();              
         this.createTrunkElement();
@@ -57,6 +57,12 @@ class TreeLog{
         this.branchElement = document.createElement("div")
 
         this.branchElement.id = "branch"
+        if(this.branchPosX === 12.6){
+            this.branchElement.style.backgroundImage = `url("./img/branchleft1_scaled_7x_pngcrushed.png")`
+        } else
+        if(this.branchPosX === 41.5){
+            this.branchElement.style.backgroundImage = `url("./img/branchright1_scaled_5x_pngcrushed.png")`
+        }
         this.branchElement.style.width = `${this.branchWidth}vw`;
         this.branchElement.style.height = `${this.branchHeight}vh`;
         this.branchElement.style.left = `${this.branchPosX}vw`;
