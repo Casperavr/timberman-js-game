@@ -79,6 +79,10 @@ class Player {
         clearInterval(logMovingInterval);
         clearInterval(countdownInterval);
 
+        if(scoreCounter > localStorage.getItem("highscore")){
+            localStorage.setItem("highscore", scoreCounter);
+        }
+
         setTimeout(() => {
 
             this.scoreElement.remove();
@@ -93,7 +97,8 @@ class Player {
             this.deathScreenElement.appendChild(this.deathMessageElement);
 
             this.finalScoreElement = document.createElement("h3");
-            this.finalScoreElement.innerText = `Score: ${scoreCounter}`;
+            this.finalScoreElement.innerText = `Score: ${scoreCounter}
+            Highscore: ${localStorage.getItem("highscore")}`;
             this.deathScreenElement.appendChild(this.finalScoreElement);
 
             this.tryAgainButton = document.createElement("a")
