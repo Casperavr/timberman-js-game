@@ -11,7 +11,7 @@ body {
     position: relative;
     font-family: 'Arial', Courier, monospace;
     color: white;
-    text-shadow:  #000 -1px 0, #000  0 1px, #000  1px 0, #000  0 -1px, #000  -1px -1px, #000  1px 1px, #000  -1px 1px, #000  1px -1px;
+    text-shadow:  #000 -2px 0, #000  0 2px, #000  2px 0, #000  0 -2px, #000  -2px -2px, #000  2px 2px, #000  -2px 2px, #000  2px -2px;
 
 }
 
@@ -134,7 +134,7 @@ h4{
     font-size: 3em;
     display: flex;
     margin-top: 0;
-    margin-bottom: 120px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -146,7 +146,8 @@ h4{
 }
 
 #gameover a:visited, a:link, a:hover, a:active{
-    color: #006600;
+    /* color: #006600;*/
+    color: white;
 }
 
 #countdownTimer{
