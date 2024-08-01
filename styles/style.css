@@ -77,7 +77,6 @@ h4{
     background-color: rgb(137, 137, 137);
     width: 40vw;
     height: 10vh;
-    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;

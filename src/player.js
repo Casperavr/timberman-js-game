@@ -32,8 +32,8 @@ class Player {
         bodyElement.appendChild(this.instructionElement);
 
         this.controlsElement = document.createElement("h2");
-        this.controlsElement.innerText = `Press Arrow Left or Arrow Right to start
-                                        Try to avoid the branches!`;
+        this.controlsElement.innerText = `Press Arrow Left or Arrow Right to start 
+        Try to avoid the branches!`;
         this.instructionElement.appendChild(this.controlsElement);
     }
 
