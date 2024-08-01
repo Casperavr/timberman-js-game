@@ -20,10 +20,10 @@ let difficulty = 0;
 
 // interaction
 document.addEventListener("keydown", (event) => {
-    if(isDead){return}
 
     switch(event.code) {
         case "ArrowLeft":
+            if(isDead){return}
             if(!hasStarted){hasStarted = true; startTimer(); myLumberjack.removeInstructionElement()};
             if(countdown < countdownMax){countdown += 500};
             updateDifficulty();
@@ -37,6 +37,7 @@ document.addEventListener("keydown", (event) => {
         
         
         case "ArrowRight":
+            if(isDead){return}
             if(!hasStarted){hasStarted = true; startTimer(); myLumberjack.removeInstructionElement()};
             if(countdown < countdownMax){countdown += 500};
             updateDifficulty();
@@ -47,6 +48,10 @@ document.addEventListener("keydown", (event) => {
             treeArray[0].removeLog();
             treeArray.shift();
             break;
+
+
+        case "Space":
+            if(isDead){location.href = "./index.html"}
     }
 });
 
@@ -62,7 +67,7 @@ const logMovingInterval = setInterval(() => {
         }
     }
 
-    // adding new logs if the screen is not filled with logs
+    // adding new logs if the treearray is not filled
     // also only add randomized log if the previous log doesnt have a branch
     if(treeArray.length < 6 && treeArray[treeArray.length - 1].branchPosition === 1){
         treeArray.push(new TreeLog(Math.floor(Math.random() * 3)))
@@ -79,7 +84,7 @@ const logMovingInterval = setInterval(() => {
     myLumberjack.updateCountdown(`${countdown/countdownMax*20}vw`)
 }, 20);
 
-// check to see if the player position is the same as the branch position of the fist log 
+// check to see if the player position is the same as the branch position of the fist log or if the countdown has reached zero
 function checkIfDied(){
 
     if(myLumberjack.positionX === 23 && treeArray[0].branchPosition === 0){
@@ -112,14 +117,17 @@ function createLog(){
     }
 }
 
+// function for starting countdown timer, countdown speed is based on difficulty variable
 function startTimer(){
     countdownInterval = setInterval(() => {countdown -= 50 + difficulty * 20}, 50);
 }
 
+// function for stopping countdown timer when player has died
 function stopTimer(){
     clearInterval(countdownInterval);
 }
 
+// function for updating difficulty for every 15 steps in score
 function updateDifficulty(){
     if(scoreCounter % 15 === 0){difficulty += 1};
 }

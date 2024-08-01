@@ -98,7 +98,7 @@ class Player {
 
             this.tryAgainButton = document.createElement("a")
             this.tryAgainButton.setAttribute("href", "./index.html")
-            this.tryAgainButton.innerText = "Try Again";
+            this.tryAgainButton.innerText = "Press Space or click to try again";
 
             this.deathScreenElement.appendChild(this.tryAgainButton);
         }, 2000);
