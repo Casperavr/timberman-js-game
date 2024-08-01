@@ -57,7 +57,7 @@ document.addEventListener("keydown", (event) => {
 
 
 // gametick containing: log movement and spawning, checking for deaths and updating countdown progress
-const logMovingInterval = setInterval(() => {
+const gameTickInterval = setInterval(() => {
 
     // moving the logs down over the tree array
     if(treeArray[0].positionY > 15){

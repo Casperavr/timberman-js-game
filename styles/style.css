@@ -1,5 +1,5 @@
 body {
-    background-color: #bbbbbb;
+    background-color: rgb(193, 200, 211);
     margin: 0;
     padding: 0;
     display: flex;
@@ -38,7 +38,7 @@ section {
 }
 
 h1{
-    background-color: #bbbbbb;
+    background-color: rgb(193, 200, 211);
     padding: 5vh 46vh;
     z-index: 4;
     margin: 0;
@@ -61,26 +61,28 @@ h4{
 
 #gameover {
     position: absolute;
-    background-color: rgb(137, 137, 137);
+    background-color: #693830;
     width: 40vw;
     height: 55vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    border: #402020 4px solid;
     border-radius: 50px;
     z-index: 4;
 }
 
 #instruction {
     position: absolute;
-    background-color: rgb(137, 137, 137);
+    background-color: #693830;
     width: 40vw;
     height: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    border: #402020 4px solid;
     border-radius: 50px;
     z-index: 3;
 }

@@ -76,7 +76,7 @@ class Player {
         this.playerElement.style.width = `${this.width}vw`;
         this.playerElement.style.backgroundImage = `url("./img/Gravestone.png")`;
 
-        clearInterval(logMovingInterval);
+        clearInterval(gameTickInterval);
         clearInterval(countdownInterval);
 
         if(scoreCounter > localStorage.getItem("highscore")){
