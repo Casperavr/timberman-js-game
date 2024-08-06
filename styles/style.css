@@ -95,7 +95,7 @@ h4{
 
 #player {
     position: absolute;
-    background-image: url("../img/timberman-right_scaled_10x_pngcrushed.png");
+    background-image: url("../img/hedgehogright.png");
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 1;
